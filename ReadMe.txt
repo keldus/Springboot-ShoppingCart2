@@ -1,3 +1,3 @@
-1-Ouvrir un terminal (cmd) et exÈcuter dans le root du dossier: "mvn package && java -jar target/shoppingcart-0.0.1.jar"
-2-Lorsque l'initialisation du serveur est terminÈ, ouvrir un navigateur (Chrome ou Firefox) et accÈder le lien: http://localhost:8090/
-3-Tester le shopping cart
+1-Simplement ex√©cuter dans le root du dossier la commande: mvn package && java -jar target/ShoppingCart-0.0.1.jar
+2-Une fois termin√©, acc√©der le lien: http://localhost:8090/
+3-Et vous aurez acc√®s au Shopping Cart.
