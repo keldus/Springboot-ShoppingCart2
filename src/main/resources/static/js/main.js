@@ -52,13 +52,17 @@
 	      	$scope.cart = response.data;
 	      	$scope.total = 0.00;
 	      	jQuery.each(response.data, function(key,value){
-	      		$scope.total += value.item.price;
+	      		$scope.total += value.item.price*value.quantity;
 	      	})
 	    })
 
 	    $scope.change = function(item) {
 	    	$http.put('/api/v1/cart/update', item).then(function(response) {
 		      	if(response.data){
+		      		$scope.total = 0.00;
+			      	jQuery.each($scope.cart, function(key,value){
+			      		$scope.total += value.item.price*value.quantity;
+			      	})
 		      		alert("Quantity update successful!");
 		      	}else{
 					alert("Quantity update failed!");
@@ -69,7 +73,7 @@
 	    $scope.removeFromCart = function(item){
 	    	$http.delete('/api/v1/cart/remove/'+item.id, item).then(function(response) {
 		      	if(response.data){
-		      		$scope.total = Math.round($scope.total - item.item.price* 100) / 100;
+		      		$scope.total = Math.round($scope.total - (item.item.price-item.quantity)* 100) / 100;
 		      		$("#cartItem-"+item.id).remove();
 		      		alert("Item removed!");
 		      	}else{
